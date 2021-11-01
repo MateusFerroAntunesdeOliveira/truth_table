@@ -39,6 +39,7 @@ class Main {
                 break;
             case 8:
                 p = false; q = false; r = false;
+                break;
             default:
                 p = false; q = false; r = false;
             }
