@@ -1,13 +1,11 @@
 ## Truth Table algorithm
 
-
 #### Truth Table -> Basically a diagram in rows and columns that shows the truth or falsity of a proposition with that of it's components.
 
-#### This problem is being done using java - Subject of 'Solving Problems with Mathematical Logic' (RPLM) of the Pontifical Catholic University of Parana (PUC-PR)
+#### This project is being done using java - Subject of 'Solving Problems with Mathematical Logic' (RPLM) of the Pontifical Catholic University of Parana (PUC-PR)
 
-#### @author MateusFerroAntunesdeOliveira
-#### @contributor ijoaog
-#### @contributor Javier-Agustin
-#### @contributor mhsilverio
+- project_description file related about the description of the project
+
+#### @author MateusFerroAntunesdeOliveira @author ijoaog @author Javier-Agustin @author mhsilverio
 
 - Work in Progress - 01/11/2021.
