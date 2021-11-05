@@ -101,6 +101,7 @@ class Main {
                 p = false; q = false; r = false;
             }
             
+            //-> Tamanho 5
             if (formulaCerta.length() == 5) {
                 if (formulaCerta.charAt(1) == '^' && formulaCerta.charAt(3) == '^')
                     resposta = p && q && r;
@@ -111,6 +112,7 @@ class Main {
                 else if (formulaCerta.charAt(1) == 'v' && formulaCerta.charAt(3) == 'v')
                     resposta = p || q || r;
             }
+            //-> Tamanho 6
             else if (formulaCerta.length() == 6) {
                 if (formulaCerta.charAt(0) == '~') {
                     if (formulaCerta.charAt(2) == '^' && formulaCerta.charAt(4) == '^')
@@ -143,6 +145,53 @@ class Main {
                         resposta = p || q || !r;
                 }
             }
+            //-> Tamanho 7
+            else if (formulaCerta.length() == 7) {
+                if (formulaCerta.charAt(0) == '~' && formulaCerta.charAt(3) == '~') {
+                    if (formulaCerta.charAt(2) == '^' && formulaCerta.charAt(5) == '^')
+                        resposta = !p && !q && r;
+                    else if (formulaCerta.charAt(2) == 'v' && formulaCerta.charAt(5) == '^')
+                        resposta = !p || !q && r;
+                    else if (formulaCerta.charAt(2) == '^' && formulaCerta.charAt(5) == 'v')
+                        resposta = !p && !q || r;
+                    else if (formulaCerta.charAt(2) == 'v' && formulaCerta.charAt(5) == 'v')
+                        resposta = !p || !q || r;
+                }
+                else if (formulaCerta.charAt(0) == '~' && formulaCerta.charAt(5) == '~') {
+                    if (formulaCerta.charAt(2) == '^' && formulaCerta.charAt(4) == '^')
+                        resposta = !p && q && !r;
+                    else if (formulaCerta.charAt(2) == 'v' && formulaCerta.charAt(4) == '^')
+                        resposta = !p || q && !r;
+                    else if (formulaCerta.charAt(2) == '^' && formulaCerta.charAt(4) == 'v')
+                        resposta = !p && q || !r;
+                    else if (formulaCerta.charAt(2) == 'v' && formulaCerta.charAt(4) == 'v')
+                        resposta = !p || q || !r;
+                }
+                else if (formulaCerta.charAt(2) == '~' && formulaCerta.charAt(5) == '~') {
+                    if (formulaCerta.charAt(1) == '^' && formulaCerta.charAt(4) == '^')
+                        resposta = p && !q && !r;
+                    else if (formulaCerta.charAt(1) == 'v' && formulaCerta.charAt(4) == '^')
+                        resposta = p || !q && !r;
+                    else if (formulaCerta.charAt(1) == '^' && formulaCerta.charAt(4) == 'v')
+                        resposta = p && !q || !r;
+                    else if (formulaCerta.charAt(1) == 'v' && formulaCerta.charAt(4) == 'v')
+                        resposta = p || !q || !r;
+                }
+            }
+            //-> Tamanho 8
+            else if (formulaCerta.length() == 8) {
+                if (formulaCerta.charAt(0) == '~' && formulaCerta.charAt(3) == '~' && formulaCerta.charAt(6) == '~') {
+                    if (formulaCerta.charAt(2) == '^' && formulaCerta.charAt(5) == '^')
+                        resposta = !p && !q && !r;
+                    else if (formulaCerta.charAt(2) == 'v' && formulaCerta.charAt(5) == '^')
+                        resposta = !p || !q && !r;
+                    else if (formulaCerta.charAt(2) == '^' && formulaCerta.charAt(5) == 'v')
+                        resposta = !p && !q || !r;
+                    else if (formulaCerta.charAt(2) == 'v' && formulaCerta.charAt(5) == 'v')
+                        resposta = !p || !q || !r;
+                }
+            }
+
             System.out.print  ("| " + printBit(p) + " | " + printBit(q) + " | " + printBit(r) );
             System.out.println("| " + printBit(resposta));
         }
@@ -150,66 +199,5 @@ class Main {
     }
 
 
-
-    
-    public static void main(String[] args) {
-        boolean p, q, r;
-        System.out.println();
-        System.out.println("+---+---+---+---------------+");
-        System.out.println("| p | q | r |   p v q v r   |");
-        System.out.println("+---+---+---+---------------+");
-
-        for (int i = 1; i <= 8; ++i) {
-            switch (i) {
-            case 1:
-                p = true;
-                q = true;
-                r = true;
-                break;
-            case 2:
-                p = true;
-                q = true;
-                r = false;
-                break;
-            case 3:
-                p = true;
-                q = false;
-                r = true;
-                break;
-            case 4:
-                p = true;
-                q = false;
-                r = false;
-                break;
-            case 5:
-                p = false;
-                q = true;
-                r = true;
-                break;
-            case 6:
-                p = false;
-                q = true;
-                r = false;
-                break;
-            case 7:
-                p = false;
-                q = false;
-                r = true;
-                break;
-            case 8:
-                p = false;
-                q = false;
-                r = false;
-                break;
-            default:
-                p = false;
-                q = false;
-                r = false;
-            }
-            System.out.print("| " + printBit(p) + " | " + printBit(q) + " | " + printBit(r) + " |");
-            System.out.println("       " + printBit(p || q || r) + "       |");
-        }
-        System.out.println("+---+---+---+---------------+");
-        System.out.println();
-    }
+    public static void main(String[] args) { }
 }
