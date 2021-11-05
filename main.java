@@ -38,6 +38,40 @@ class Main {
         System.out.println("+---+");
     }
 
+    public void tabela2var(String formulaCerta) {
+        boolean p, q, resposta = true;
+
+        System.out.println("+---+---+");
+        System.out.print  ("| p | q |");
+        formula(formulaCerta);
+        System.out.println();
+        System.out.println("+---+---+");
+        
+        for (int i = 3; i >= 0; --i) {
+            switch (i) {
+            case 3:
+                p = true; q = true; break;
+            case 2:
+                p = true; q = false; break;
+            case 1:
+                p = false; q = true; break;
+            default:
+                p = false; q = false;
+            }
+
+            if (formulaCerta.length() == 3) resposta = formulaCerta.charAt(1) == '^' ? p && q : p || q;
+            else if (formulaCerta.length() == 4) {
+                if (formulaCerta.charAt(0) == '~') resposta = formulaCerta.charAt(2) == '^' ? (!p && q) : (!p || q);
+                else if (formulaCerta.charAt(2) == '~') resposta = formulaCerta.charAt(1) == '^' ? (p && !q) : (p || !q);
+            }
+            else if (formulaCerta.length() == 5) resposta = formulaCerta.charAt(2) == '^' ? (!p && !q) : (!p || !q);
+            
+            System.out.print  ("| "    + printBit(p) + " | " + printBit(q) );
+            System.out.println("|    " + printBit(resposta));
+        }
+        System.out.println("+---+---+");
+    }
+
     public static void main(String[] args) {
         boolean p, q, r;
         System.out.println();
