@@ -221,21 +221,22 @@ class Main {
         Scanner teclado = new Scanner(System.in);
         String formula;
 
-        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        System.out.println("|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|");
+        System.out.println("|                                   |");
+        System.out.println("|  Operacoes permitidas: v = OU     |");
+        System.out.println("|  Operacoes permitidas: ^ = E      |");
+        System.out.println("|  Operacoes permitidas: ~ = ¬      |");
+        System.out.println("|                                   |");
+        System.out.println("|  Variaveis permitidas: p - q - r  |");
+        System.out.println("|                                   |");
+        System.out.println("|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|");
         System.out.println("                                   ");
-        System.out.println("  Operacoes permitidas: v = OU     ");
-        System.out.println("  Operacoes permitidas: ^ = E      ");
-        System.out.println("  Operacoes permitidas: ~ = ¬      ");
-        System.out.println("                                   ");
-        System.out.println("  Variaveis permitidas: p - q - r  ");
-        System.out.println("                                   ");
-        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-        System.out.println("                                   ");
-        System.out.println("  Agora, digite a formula: ");
+        System.out.print  ("Agora, digite a formula: ");
         formula = teclado.nextLine().toLowerCase();
 
         switch(formula.length()) {
             case 1:
+                System.out.println("Formula: " + formula + "\n");
                 break;
             default:
         }
