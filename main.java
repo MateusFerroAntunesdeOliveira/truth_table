@@ -1,5 +1,5 @@
 // import java.util.ArrayList;
-// import java.util.Scanner;
+import java.util.Scanner;
 
 class Main {
     public static Character printBit(boolean p) {
@@ -198,6 +198,48 @@ class Main {
         System.out.println("+---+---+---+");
     }
 
+    boolean formula1var(String formula) {
+        if ((formula.charAt(0) == 'p' || formula.charAt(0) == 'q' || formula.charAt(0) == 'r') && formula.length() == 1) {
+            tabela1var(formula);
+            return true;
+        } 
+        else if ((formula.charAt(0) == '~' && formula.charAt(1) == 'p') || 
+                 (formula.charAt(0) == '~' && formula.charAt(1) == 'q') || 
+                 (formula.charAt(0) == '~' && formula.charAt(1) == 'r')) {
+                    tabela1var(formula);
+                    return true;
+                 }
+        
+        else return false;
+    }
 
-    public static void main(String[] args) { }
+    //TODO boolean formula2var(String formula) {}
+
+    //TODO boolean formula3var(String formula) {}
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        String formula;
+
+        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        System.out.println("                                   ");
+        System.out.println("  Operacoes permitidas: v = OU     ");
+        System.out.println("  Operacoes permitidas: ^ = E      ");
+        System.out.println("  Operacoes permitidas: ~ = ¬      ");
+        System.out.println("                                   ");
+        System.out.println("  Variaveis permitidas: p - q - r  ");
+        System.out.println("                                   ");
+        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        System.out.println("                                   ");
+        System.out.println("  Agora, digite a formula: ");
+        formula = teclado.nextLine().toLowerCase();
+
+        switch(formula.length()) {
+            case 1:
+                break;
+            default:
+        }
+
+        teclado.close();
+    }
 }
