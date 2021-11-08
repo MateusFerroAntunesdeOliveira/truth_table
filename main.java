@@ -1,16 +1,13 @@
-// import java.util.ArrayList;
 import java.util.Scanner;
 
 class Main {
     public static Character printBit(boolean p) {
-        if (p)
-            return 'V';
-        else
-            return 'F';
+        if (p) return 'V';
+        else return 'F';
     }
 
     public void formula(String formulaCerta) {
-        System.out.println("( " + formulaCerta + " )");
+        System.out.println(" " + formulaCerta + " |");
     }
 
     public void tabela1var(String formulaCerta) {
@@ -199,28 +196,131 @@ class Main {
     }
 
     boolean formula1var(String formula) {
-        if ((formula.charAt(0) == 'p' || formula.charAt(0) == 'q' || formula.charAt(0) == 'r') && formula.length() == 1) {
+        if ((formula.charAt(0) == 'p' && formula.length() == 1) || formula.charAt(0) == '~' && formula.charAt(1) == 'p') {
             tabela1var(formula);
             return true;
-        } 
-        else if ((formula.charAt(0) == '~' && formula.charAt(1) == 'p') || 
-                 (formula.charAt(0) == '~' && formula.charAt(1) == 'q') || 
-                 (formula.charAt(0) == '~' && formula.charAt(1) == 'r')) {
-                    tabela1var(formula);
-                    return true;
-                 }
-        
+        }
         else return false;
     }
 
-    //TODO boolean formula2var(String formula) {}
+    boolean formula2var(String formula) {
+        boolean formulaOk = false;
 
-    //TODO boolean formula3var(String formula) {}
+        //-> Tamanho 3
+        if (formula.length() == 3) {
+            if (formula.charAt(0) == 'p' && formula.charAt(2) == 'q') {
+                if (formula.charAt(1) == '^' || formula.charAt(1) == 'v')
+                formulaOk = true;
+            } else formulaOk = false;
+        }
+
+        //-> Tamanho 4
+        if (formula.length() == 4) {
+            if (formula.charAt(0) == '~' && formula.charAt(1) == 'p' && formula.charAt(3) == 'q') {
+                if (formula.charAt(2) == '^' || formula.charAt(2) == 'v')
+                formulaOk = true;
+            }
+            else if (formula.charAt(0) == 'p' && formula.charAt(2) == '~' && formula.charAt(3) == 'q') {
+                if (formula.charAt(1) == '^' || formula.charAt(1) == 'v')
+                formulaOk = true;
+            }
+            else formulaOk = false;
+        }
+
+        //-> Tamanho 5
+        if (formula.length() == 5) {
+            if (formula.charAt(0) == '~' && formula.charAt(1) == 'p' && formula.charAt(3) == '~' && formula.charAt(4) == 'q') {
+                if (formula.charAt(2) == '^' || formula.charAt(2) == 'v')
+                formulaOk = true;
+            }
+            else formulaOk = false;
+        }
+
+        //-> Tamanho fora do esperado...
+        else formulaOk = false;
+
+        tabela2var(formula);
+        return formulaOk;
+    }
+
+    boolean formula3var(String formula) {
+        boolean formulaOk = false;
+
+        //-> Tamanho 5
+        if (formula.length() == 5) {
+            if (formula.charAt(0) == 'p' && formula.charAt(2) == 'q' && formula.charAt(4) == 'r') {
+                if ((formula.charAt(1) == '^' || formula.charAt(1) == 'v') &&
+                    (formula.charAt(3) == '^' || formula.charAt(3) == 'v'))
+                formulaOk = true;
+            } else formulaOk = false;
+        }
+
+        //-> Tamanho 6
+        if (formula.length() == 6) {
+            if (formula.charAt(0) == '~' && formula.charAt(1) == 'p' && formula.charAt(3) == 'q' && formula.charAt(5) == 'r') {
+                if ((formula.charAt(2) == '^' || formula.charAt(2) == 'v') &&
+                    (formula.charAt(4) == '^' || formula.charAt(4) == 'v'))
+                    formulaOk = true;
+            }
+            else if (formula.charAt(0) == 'p' && formula.charAt(2) == '~' && formula.charAt(3) == 'q' && formula.charAt(5) == 'r') {
+                if ((formula.charAt(1) == '^' || formula.charAt(1) == 'v') &&
+                    (formula.charAt(4) == '^' || formula.charAt(4) == 'v'))
+                    formulaOk = true;
+            }
+            else if (formula.charAt(0) == 'p' && formula.charAt(2) == 'q' && formula.charAt(4) == '~' && formula.charAt(5) == 'r') {
+                if ((formula.charAt(1) == '^' || formula.charAt(1) == 'v') &&
+                    (formula.charAt(3) == '^' || formula.charAt(3) == 'v'))
+                    formulaOk = true;
+            }
+
+            else formulaOk = false;
+        } 
+        
+        //-> Tamanho 7
+        if (formula.length() == 7) {
+            if (formula.charAt(0) == '~' && formula.charAt(1) == 'p' && formula.charAt(3) == '~' && formula.charAt(4) == 'q' && formula.charAt(6) == 'r') {
+                if ((formula.charAt(2) == '^' || formula.charAt(2) == 'v') &&
+                    (formula.charAt(5) == '^' || formula.charAt(5) == 'v'))
+                    formulaOk = true;
+            }
+            else if (formula.charAt(0) == '~' && formula.charAt(1) == 'p' && formula.charAt(3) == 'q' && formula.charAt(5) == '~' && formula.charAt(6) == 'r') {
+                if ((formula.charAt(2) == '^' || formula.charAt(2) == 'v') &&
+                    (formula.charAt(4) == '^' || formula.charAt(4) == 'v'))
+                    formulaOk = true;
+            }
+            else if (formula.charAt(0) == 'p' && formula.charAt(2) == '~' && formula.charAt(3) == 'q' && formula.charAt(5) == '~' && formula.charAt(6) == 'r') {
+                if ((formula.charAt(1) == '^' || formula.charAt(1) == 'v') &&
+                    (formula.charAt(4) == '^' || formula.charAt(4) == 'v'))
+                    formulaOk = true;
+            }
+
+            else formulaOk = false;
+        } 
+
+        //-> Tamanho 8
+        if (formula.length() == 8) {
+            if (formula.charAt(0) == '~' && formula.charAt(1) == 'p' && formula.charAt(3) == '~' && formula.charAt(4) == 'q' && formula.charAt(6) == '~' && formula.charAt(7) == 'r') {
+                if ((formula.charAt(2) == '^' || formula.charAt(2) == 'v') &&
+                    (formula.charAt(5) == '^' || formula.charAt(5) == 'v'))
+                    formulaOk = true;
+            }
+            
+            else formulaOk = false;
+        } 
+
+        //-> Tamanho fora do esperado...
+        else formulaOk = false;
+
+        formula3var(formula);
+        return formulaOk;
+    }
 
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        String formula;
+        boolean tabelaOk = false;
 
+        Main newTable = new Main();
+        
         System.out.println("|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|");
         System.out.println("|                                   |");
         System.out.println("|  Operacoes permitidas: v = OU     |");
@@ -232,13 +332,31 @@ class Main {
         System.out.println("|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|");
         System.out.println("                                   ");
         System.out.print  ("Agora, digite a formula: ");
-        formula = teclado.nextLine().toLowerCase();
-
+        String formula = teclado.nextLine().toLowerCase();
+        
         switch(formula.length()) {
             case 1:
-                System.out.println("Formula: " + formula + "\n");
+            case 2:
+                tabelaOk = newTable.formula1var(formula);
+                break;
+            case 3:
+            case 4:
+                tabelaOk = newTable.formula2var(formula);
+                break;
+            case 5:
+                if (formula.charAt(4) == 'r') tabelaOk = newTable.formula3var(formula);
+                else tabelaOk = newTable.formula2var(formula);
+                // if (formula.charAt(3) == '^' || formula.charAt(3) == 'v') tabelaOk = newTable.formula3var(formula);
+                // else tabelaOk = newTable.formula2var(formula);
+                break;
+            case 6:
+            case 7:
+            case 8:
+                tabelaOk = newTable.formula3var(formula);
                 break;
             default:
+                tabelaOk = false;
+                System.out.println("Formula Incorreta");
         }
 
         teclado.close();
