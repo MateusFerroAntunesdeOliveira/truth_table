@@ -22,8 +22,7 @@ class Main {
         for (int i = 1; i >= 0; --i) {
             switch (i) {
             case 1:
-                p = true;
-                break;
+                p = true; break;
             default:
                 p = false;
             }
@@ -64,7 +63,7 @@ class Main {
             else if (formulaCerta.length() == 5) resposta = formulaCerta.charAt(2) == '^' ? (!p && !q) : (!p || !q);
             
             System.out.print  ("| " + printBit(p) + " | " + printBit(q) );
-            System.out.println("| " + printBit(resposta));
+            System.out.println(" | " + printBit(resposta));
         }
         System.out.println("+---+---+");
     }
@@ -190,7 +189,7 @@ class Main {
             }
 
             System.out.print  ("| " + printBit(p) + " | " + printBit(q) + " | " + printBit(r) );
-            System.out.println("| " + printBit(resposta));
+            System.out.println(" | " + printBit(resposta));
         }
         System.out.println("+---+---+---+");
     }
@@ -320,25 +319,26 @@ class Main {
         System.out.println("|                                   |");
         System.out.println("|  Operacoes permitidas: v = OU     |");
         System.out.println("|  Operacoes permitidas: ^ = E      |");
-        System.out.println("|  Operacoes permitidas: ~ = ¬      |");
+        System.out.println("|  Operacoes permitidas: ~ = NOT    |");
         System.out.println("|                                   |");
-        System.out.println("|  Variaveis permitidas: p - q - r  |");
+        System.out.println("|  Variaveis permitidas: p | q | r  |");
         System.out.println("|                                   |");
         System.out.println("|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|");
         System.out.println("                                   ");
         System.out.print  ("Agora, digite a formula: ");
+        
         String formula = teclado.nextLine().toLowerCase();
-
         return formula;
     }
 
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        boolean tabelaOk = false;
         Main newTable = new Main();
-
+        boolean tabelaOk = false;
         String formula = menu();
-        
+
+        //TODO Verificar as exceções e tratar fórmulas mal formadas (FMFs)
+
         switch(formula.length()) {
             case 1:
             case 2:
