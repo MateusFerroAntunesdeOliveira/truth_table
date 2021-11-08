@@ -195,7 +195,7 @@ class Main {
         System.out.println("+---+---+---+");
     }
 
-    boolean formula1var(String formula) {
+    private boolean formula1var(String formula) {
         if ((formula.charAt(0) == 'p' && formula.length() == 1) || formula.charAt(0) == '~' && formula.charAt(1) == 'p') {
             tabela1var(formula);
             return true;
@@ -203,7 +203,7 @@ class Main {
         else return false;
     }
 
-    boolean formula2var(String formula) {
+    private boolean formula2var(String formula) {
         boolean formulaOk = false;
 
         //-> Tamanho 3
@@ -243,8 +243,8 @@ class Main {
         return formulaOk;
     }
 
-    boolean formula3var(String formula) {
-        boolean formulaOk = false;
+    private boolean formula3var(String formula) {
+        boolean formulaOk = true;
 
         //-> Tamanho 5
         if (formula.length() == 5) {
@@ -252,7 +252,8 @@ class Main {
                 if ((formula.charAt(1) == '^' || formula.charAt(1) == 'v') &&
                     (formula.charAt(3) == '^' || formula.charAt(3) == 'v'))
                 formulaOk = true;
-            } else formulaOk = false;
+            }
+            else formulaOk = false;
         }
 
         //-> Tamanho 6
@@ -272,7 +273,6 @@ class Main {
                     (formula.charAt(3) == '^' || formula.charAt(3) == 'v'))
                     formulaOk = true;
             }
-
             else formulaOk = false;
         } 
         
@@ -293,7 +293,6 @@ class Main {
                     (formula.charAt(4) == '^' || formula.charAt(4) == 'v'))
                     formulaOk = true;
             }
-
             else formulaOk = false;
         } 
 
@@ -304,23 +303,19 @@ class Main {
                     (formula.charAt(5) == '^' || formula.charAt(5) == 'v'))
                     formulaOk = true;
             }
-            
             else formulaOk = false;
         } 
 
         //-> Tamanho fora do esperado...
         else formulaOk = false;
 
-        formula3var(formula);
+        tabela3var(formula);
         return formulaOk;
     }
 
-    public static void main(String[] args) {
+    static String menu() {
         Scanner teclado = new Scanner(System.in);
-        boolean tabelaOk = false;
 
-        Main newTable = new Main();
-        
         System.out.println("|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|");
         System.out.println("|                                   |");
         System.out.println("|  Operacoes permitidas: v = OU     |");
@@ -333,6 +328,16 @@ class Main {
         System.out.println("                                   ");
         System.out.print  ("Agora, digite a formula: ");
         String formula = teclado.nextLine().toLowerCase();
+
+        return formula;
+    }
+
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        boolean tabelaOk = false;
+        Main newTable = new Main();
+
+        String formula = menu();
         
         switch(formula.length()) {
             case 1:
@@ -346,8 +351,6 @@ class Main {
             case 5:
                 if (formula.charAt(4) == 'r') tabelaOk = newTable.formula3var(formula);
                 else tabelaOk = newTable.formula2var(formula);
-                // if (formula.charAt(3) == '^' || formula.charAt(3) == 'v') tabelaOk = newTable.formula3var(formula);
-                // else tabelaOk = newTable.formula2var(formula);
                 break;
             case 6:
             case 7:
@@ -356,9 +359,13 @@ class Main {
                 break;
             default:
                 tabelaOk = false;
-                System.out.println("Formula Incorreta");
+            if (!tabelaOk) {
+                System.out.println("\n=-=-=-=-=-=-=-=-=-=-=");
+                System.out.println("  FORMULA INCORRETA  ");
+                System.out.println("=-=-=-=-=-=-=-=-=-=-=\n");
+                formula = menu();
+            }
         }
-
         teclado.close();
     }
 }
