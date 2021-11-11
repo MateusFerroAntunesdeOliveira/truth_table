@@ -329,8 +329,8 @@ class Main {
         System.out.println("\n|=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|");
         System.out.println("|                                   |");
         System.out.println("|  Operacoes permitidas: v = OU     |");
-        System.out.println("|  Operacoes permitidas: ^ = E      |");
-        System.out.println("|  Operacoes permitidas: ~ = NOT    |");
+        System.out.println("|                        ^ = E      |");
+        System.out.println("|                        ~ = NOT    |");
         System.out.println("|                                   |");
         System.out.println("|  Variaveis permitidas: p | q | r  |");
         System.out.println("|                                   |");
@@ -384,3 +384,7 @@ class Main {
         teclado.close();
     }
 }
+
+//-> Exemplo MATEUS FERRO
+//-> EX FBF:   ~p^~q^~r
+//-> EX FMF:   ~p^qvvr
