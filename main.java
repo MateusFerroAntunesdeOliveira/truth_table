@@ -384,7 +384,3 @@ class Main {
         teclado.close();
     }
 }
-
-//-> Exemplo MATEUS FERRO
-//-> EX FBF:   ~p^~q^~r
-//-> EX FMF:   ~p^qvvr
